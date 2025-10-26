@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'docker-agent' }
 
     environment {
         IMAGE_NAME = 'faizan23/react-docker-k8s'
