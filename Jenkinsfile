@@ -1,19 +1,22 @@
 pipeline {
     agent any
+
     environment {
         IMAGE_NAME = "faizan23/react-docker-k8s"
+        TAG = "latest"
     }
 
     stages {
         stage('Checkout') {
             steps {
-              git branch: 'main', url: 'https://github.com/Faiznhmd/react-docker-k8s'
+                // Explicitly pull the correct branch
+                git branch: 'main', url: 'https://github.com/Faiznhmd/react-docker-k8s'
             }
         }
 
         stage('Build Docker image') {
             steps {
-                sh 'docker build -t %IMAGE_NAME%:TAG .'
+                sh 'docker build -t $IMAGE_NAME:$TAG .'
             }
         }
 
