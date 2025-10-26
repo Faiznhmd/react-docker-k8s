@@ -13,14 +13,14 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                bat 'docker build -t %IMAGE_NAME%:TAG .'
+                sh 'docker build -t %IMAGE_NAME%:TAG .'
             }
         }
 
         stage('Push to DockerHub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
-                    bat '''
+                    sh '''
                     echo $DOCKER_TOKEN | docker login -u faizan23 --password-stdin
                     docker push $IMAGE_NAME:$TAG
                     '''
