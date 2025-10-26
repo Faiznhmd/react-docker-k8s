@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Faiznhmd/react-docker-k8s'
+              git branch: 'main', url: 'https://github.com/Faiznhmd/react-docker-k8s'
             }
         }
 
