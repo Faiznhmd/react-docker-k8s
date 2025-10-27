@@ -23,7 +23,7 @@ pipeline {
                     // Use a standard Docker client image.
                     // This relies on the Jenkins agent having the host's /var/run/docker.sock mounted (Option A)
                     // OR the Jenkins agent being run in --privileged mode (Option B).
-                    image 'docker: latest'
+                image 'docker:latest'
                     args '-u root' // Sometimes necessary for permissions inside the container
                 }
             }
